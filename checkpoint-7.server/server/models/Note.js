@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const Note = new Schema(
   {
-    content: { type: String, required: true },
-    bug: { type: Object, ref: 'Bug', required: true },
+    body: { type: String, required: true },
+    bug: { type: String, ref: 'Bug', required: true },
     flagged: { type: String, enum: ['pending', 'completed', 'rejected'] },
     creatorId: { type: String, required: true }
   },
