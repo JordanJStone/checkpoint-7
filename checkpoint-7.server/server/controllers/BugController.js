@@ -11,15 +11,15 @@ export class BugController extends BaseController {
       .get('', this.getAll)
       .get('/:bugId', this.getOne)
       .get('/:id/notes', this.getNotes)
-      .post('', this.create)
+      .post('', this.createBug)
       .put('/:id', this.edit)
-      .delete('/:id', this.delete)
+      // .delete('/:id', this.delete)
   }
 
-  async create(req, res, next) {
+  async createBug(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      res.send(await bugService.create(req.body))
+      res.send(await bugService.createBug(req.body))
     } catch (error) {
       next(error)
     }

@@ -12,6 +12,18 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
+    path: '/bugs',
+    name: 'Bugs',
+    component: loadPage('BugsPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/bugs/:id',
+    name: 'BugDetailsPage',
+    component: loadPage('BugDetailsPage'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/about',
     name: 'About',
     component: loadPage('AboutPage')
@@ -21,6 +33,10 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/:catchAll(.*)*',
+    component: null
   }
 ]
 
