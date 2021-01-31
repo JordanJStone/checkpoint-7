@@ -33,13 +33,13 @@ export class BugController extends BaseController {
     }
   }
 
-  async delete(req, res, next) {
-    try {
-      return res.send(await bugService.delete(req.params.id))
-    } catch (error) {
-      next(error)
-    }
-  }
+  // async delete(req, res, next) {
+  //   try {
+  //     return res.send(await bugService.delete(req.params.id, req.userInfo.id))
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
   async getOne(req, res, next) {
     try {
