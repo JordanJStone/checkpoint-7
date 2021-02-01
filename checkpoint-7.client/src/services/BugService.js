@@ -22,6 +22,11 @@ class BugService {
     const bugData = { title: newTitle }
     await api.put('api/bugs/' + bugId, bugData)
   }
+
+  async editBugDesc(bugId, newDesc) {
+    const bugData = { description: newDesc }
+    await api.put('api/bugs/' + bugId, bugData)
+  }
 // NOTE We can't delete bugs, may need to alter to close a bug
   // async deleteBug(id) {
   // if (confirm('Confirm deletion?'))

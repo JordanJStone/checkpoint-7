@@ -6,7 +6,10 @@
           {{ bug.title }}
         </h2>
         <i class="fa fa-pencil" @click="state.editTitle = !state.editTitle"></i>
-        <p>{{ bug.description }}</p>
+        <p :contenteditable="state.editDesc" @blur="editBugDesc">
+          {{ bug.description }}
+        </p>
+        <i class="fa fa-pencil" @click="state.editDesc = !state.editDesc"></i>
         <form action="form-inline border justify-content-center align-items-center" @submit.prevent="createNote">
           <div class="form-row justify-content-center">
             <div class="col-12">
@@ -47,6 +50,7 @@ export default {
     const route = useRoute()
     const state = reactive({
       editTitle: false,
+      editDesc: false,
       notes: computed(() => AppState.notes),
       bug: computed(() => AppState.activeBug),
       account: computed(() => AppState.account),
@@ -83,6 +87,13 @@ export default {
         try {
           bugService.editBugTitle(state.bug.id, e.target.innerText)
           // console.log(state.bug.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      editBugDesc(e) {
+        try {
+          bugService.editBugDesc(state.bug.id, e.target.innerText)
         } catch (error) {
           logger.log(error)
         }
