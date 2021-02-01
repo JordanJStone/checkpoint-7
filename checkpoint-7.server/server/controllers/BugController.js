@@ -13,7 +13,7 @@ export class BugController extends BaseController {
       .get('/:id/notes', this.getNotes)
       .post('', this.createBug)
       .put('/:id', this.edit)
-      // .delete('/:id', this.delete)
+      .delete('/:id', this.delete)
   }
 
   async createBug(req, res, next) {
@@ -33,13 +33,13 @@ export class BugController extends BaseController {
     }
   }
 
-  // async delete(req, res, next) {
-  //   try {
-  //     return res.send(await bugService.delete(req.params.id, req.userInfo.id))
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+  async delete(req, res, next) {
+    try {
+      return res.send(await bugService.delete(req.params.id))
+    } catch (error) {
+      next(error)
+    }
+  }
 
   async getOne(req, res, next) {
     try {

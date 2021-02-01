@@ -1,10 +1,12 @@
-import { Appstate } from '../AppState'
+import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class NoteService {
   async getNotes(id) {
-    const res = await api.get('api/notes/' + id + '/comments')
-    Appstate.notes[id] = res.data
+    const res = await api.get('api/bugs/' + id + '/notes')
+    // console.log(res)
+    AppState.notes = res.data
+    console.log(AppState.notes)
   }
 
   async createNote(newNote) {
@@ -13,7 +15,7 @@ class NoteService {
   }
 
   async deleteNote(note) {
-    await api.delete('api/notes/' + note.id)
+    if (confirm('Confirm deletion?')) { await api.delete('api/notes/' + note.id) }
     this.getNotes(note.bug)
   }
 }

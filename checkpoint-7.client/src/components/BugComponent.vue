@@ -1,10 +1,9 @@
 <template>
   <div class="col-12 my-3 mx-5 bug-component">
     <router-link :to="{name: 'BugDetailsPage', params: {id: bugProp.id}}">
-      <h4> {{ bugProp.title }}</h4>
-      <h6> {{ bugProp.creator.name }}</h6>
+      <div> {{ bugProp.title }}  {{ bugProp.creator.name }}  {{ bugProp.closed }} </div>
+      <!-- NOTE Last modified date needs to be put into the line of bug info above -->
     </router-link>
-    <!-- NOTE Put a icon here to close, NOT DELETE a bug -->
   </div>
 </template>
 

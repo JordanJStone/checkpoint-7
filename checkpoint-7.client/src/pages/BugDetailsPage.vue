@@ -2,9 +2,11 @@
   <div class="container-fluid BugDetailsPage">
     <div class="row">
       <div class="col-12">
-        <h2>
+        <h2 :contenteditable="state.editTitle" @blur="editBugTitle">
           {{ bug.title }}
         </h2>
+        <i class="fa fa-pencil" @click="state.editTitle = !state.editTitle"></i>
+        <p>{{ bug.description }}</p>
         <form action="form-inline border justify-content-center align-items-center" @submit.prevent="createNote">
           <div class="form-row justify-content-center">
             <div class="col-12">
@@ -26,7 +28,7 @@
         </form>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
       <NoteComponent v-for="note in state.notes" :key="note.id" :note-props="note" />
     </div>
   </div>
@@ -44,7 +46,10 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
+      editTitle: false,
       notes: computed(() => AppState.notes),
+      bug: computed(() => AppState.activeBug),
+      account: computed(() => AppState.account),
       newNote: {
         body: '',
         bug: route.params.id
@@ -71,6 +76,15 @@ export default {
           state.newNote.body = ''
         } catch (error) {
           logger.error(error)
+        }
+      },
+      editBugTitle(e) {
+        // console.log('editing Bug Title', e.target.innerText)
+        try {
+          bugService.editBugTitle(state.bug.id, e.target.innerText)
+          // console.log(state.bug.id)
+        } catch (error) {
+          logger.log(error)
         }
       }
     }

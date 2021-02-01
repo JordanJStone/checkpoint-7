@@ -14,9 +14,9 @@ class BugService {
     return bugFound
   }
 
-  // async delete(id) {
-  //   return await dbContext.Bugs.findByIdAndDelete({_id: id, creatorId: userId})
-  // }
+  async delete(id) {
+    return await dbContext.Bugs.findByIdAndDelete(id)
+  }
 
   async createBug(body) {
     return await dbContext.Bugs.create(body)

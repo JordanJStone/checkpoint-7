@@ -10,7 +10,17 @@
               id="title"
               v-model="state.newBug.title"
               class="form-control d-flex"
-              placeholder="Report Bug"
+              placeholder="Bug title issue"
+            />
+          </div>
+          <div class="col-4 pr-0">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              v-model="state.newBug.description"
+              class="form-control d-flex"
+              placeholder="Describe the bug"
             />
           </div>
           <div class="col-1 pl-0">

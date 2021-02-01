@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
+          <router-link :to="{ name: 'Bugs' }" class="nav-link">
             Home
           </router-link>
         </li>
@@ -32,11 +32,11 @@
             About
           </router-link>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <router-link :to="{ name: 'Bugs' }" class="nav-link">
             Bugs
           </router-link>
-        </li>
+        </li> -->
       </ul>
       <span class="navbar-text">
         <button

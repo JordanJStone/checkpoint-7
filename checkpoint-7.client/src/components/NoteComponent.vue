@@ -1,7 +1,7 @@
 <template>
-  <div class="note-component">
-    <span>{{ noteProps.body }} - {{ noteProps.creator.name }}
-      <i class="fa fa-trash text-danger" v-if="state.account.id == noteProps.creatorId" @click="deleteComment" aria-hidden="true"></i>
+  <div class="col-12 note-component">
+    <span>{{ noteProps.body }}
+      <i class="fa fa-trash text-danger" v-if="state.account.id == noteProps.creatorId" @click="deleteNote" aria-hidden="true"></i>
     </span>
   </div>
 </template>
