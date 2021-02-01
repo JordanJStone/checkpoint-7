@@ -12,7 +12,7 @@
         <i class="fa fa-pencil" @click="state.editDesc = !state.editDesc"></i>
         <form action="form-inline border justify-content-center align-items-center" @submit.prevent="createNote">
           <div class="form-row justify-content-center">
-            <div class="col-12">
+            <div class="col-11">
               <input
                 type="text"
                 name="title"
@@ -29,6 +29,11 @@
             </div>
           </div>
         </form>
+        <div class="offset-10 col-2">
+          <button class="btn btn-danger mt-3" @click="closeBug">
+            Close Bug
+          </button>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -94,6 +99,13 @@ export default {
       editBugDesc(e) {
         try {
           bugService.editBugDesc(state.bug.id, e.target.innerText)
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      closeBug(e) {
+        try {
+          bugService.closeBug(state.bug.id, state.bug.closed)
         } catch (error) {
           logger.log(error)
         }
