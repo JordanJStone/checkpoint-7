@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 my-3 mx-5">
+  <div class="col-12 my-3 mx-5 bug-component">
     <router-link :to="{name: 'BugDetailsPage', params: {id: bugProp.id}}">
       <h4> {{ bugProp.title }}</h4>
       <h6> {{ bugProp.creator.name }}</h6>

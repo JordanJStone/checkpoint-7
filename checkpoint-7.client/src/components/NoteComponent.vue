@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="note-component">
     <span>{{ noteProps.body }} - {{ noteProps.creator.name }}
       <i class="fa fa-trash text-danger" v-if="state.account.id == noteProps.creatorId" @click="deleteComment" aria-hidden="true"></i>
     </span>

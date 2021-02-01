@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid BugDetailsPage">
     <div class="row">
       <div class="col-12">
         <h2>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <!-- NOTE NoteComponent with v-for needs to go here -->
+      <NoteComponent v-for="note in state.notes" :key="note.id" :note-props="note" />
     </div>
   </div>
 </template>
@@ -37,14 +37,14 @@ import { computed, onMounted, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import { bugService } from '../services/BugService'
-import { Appstate } from '../AppState'
+import { AppState } from '../AppState'
 import { noteService } from '../services/NoteService'
 export default {
   name: 'BugDetailsPage',
   setup() {
     const route = useRoute()
     const state = reactive({
-      notes: computed(() => Appstate.notes),
+      notes: computed(() => AppState.notes),
       newNote: {
         body: '',
         bug: route.params.id
@@ -64,7 +64,7 @@ export default {
     })
     return {
       state,
-      bug: computed(() => Appstate.activeBug),
+      bug: computed(() => AppState.activeBug),
       async createNote() {
         try {
           await noteService.createNote(state.newNote, route.params.id)

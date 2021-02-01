@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row justify-content-center text-center">
-      <!-- NOTE A component needs to go here to iterate over -->
+      <BugComponent v-for="bug in bugs" :key="bug.id" :bug-prop="bug" />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@
 <script>
 import { computed, onMounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { Appstate } from '../AppState'
+import { AppState } from '../AppState'
 import { bugService } from '../services/BugService'
 import { logger } from '../utils/Logger'
 export default {
@@ -38,8 +38,8 @@ export default {
   setup() {
     const router = useRouter()
     const state = reactive({
-      account: computed(() => Appstate.account),
-      user: computed(() => Appstate.user),
+      account: computed(() => AppState.account),
+      user: computed(() => AppState.user),
       newBug: {}
     })
     onMounted(async() => {
@@ -51,7 +51,7 @@ export default {
     })
     return {
       state,
-      bugs: computed(() => Appstate.bugs),
+      bugs: computed(() => AppState.bugs),
       async createBug() {
         try {
           // console.log('this is your new bug', state.newBug)

@@ -1,15 +1,16 @@
-import { Appstate } from '../AppState'
+import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class BugService {
   async getBugs() {
     const res = await api.get('api/bugs')
-    Appstate.bugs = res.data
+    console.log(res)
+    AppState.bugs = res.data
   }
 
   async getOne(id) {
     const res = await api.get('api/bugs/' + id)
-    Appstate.activeBug = res.data
+    AppState.activeBug = res.data
   }
 
   async createBug(bugData) {
