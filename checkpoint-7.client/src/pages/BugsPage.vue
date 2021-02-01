@@ -31,6 +31,13 @@
         </form>
       </div>
     </div>
+    <div class="row">
+      <div class="offset-9 col-3">
+        <button class="btn btn-info">
+          Filter only active Bugs
+        </button>
+      </div>
+    </div>
     <div class="row justify-content-center text-center">
       <BugComponent v-for="bug in bugs" :key="bug.id" :bug-prop="bug" />
     </div>
@@ -50,6 +57,7 @@ export default {
     const state = reactive({
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
+      bug: computed(() => AppState.activeBug),
       newBug: {}
     })
     onMounted(async() => {
@@ -72,6 +80,13 @@ export default {
           logger.log(error)
         }
       }
+      // async filterBugs() {
+      //   try {
+      //     bugService.filterBugs()
+      //   } catch (error) {
+      //     logger.log(error)
+      //   }
+      // }
     }
   }
 }

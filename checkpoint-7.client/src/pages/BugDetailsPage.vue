@@ -5,11 +5,15 @@
         <h2 :contenteditable="state.editTitle" @blur="editBugTitle">
           {{ bug.title }}
         </h2>
-        <i class="fa fa-pencil" @click="state.editTitle = !state.editTitle"></i>
+        <i class="fa fa-pencil" v-if="state.account.id == state.bug.creatorId" @click="state.editTitle = !state.editTitle"></i>
         <p :contenteditable="state.editDesc" @blur="editBugDesc">
           {{ bug.description }}
         </p>
-        <i class="fa fa-pencil" @click="state.editDesc = !state.editDesc"></i>
+        <i class="fa fa-pencil" v-if="state.account.id == state.bug.creatorId" @click="state.editDesc = !state.editDesc"></i>
+        <p> - Bug Closed: {{ bug.closed }}</p>
+        <p>
+          Creator: {{ bug.creatorId }}
+        </p>
         <form action="form-inline border justify-content-center align-items-center" @submit.prevent="createNote">
           <div class="form-row justify-content-center">
             <div class="col-11">
@@ -116,5 +120,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

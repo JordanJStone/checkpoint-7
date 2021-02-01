@@ -32,8 +32,8 @@ class BugService {
   async closeBug(bugId, closeBug) {
     if (confirm('Confirm deletion?'));
     const bugData = { closed: !closeBug }
-    console.log(bugData)
     await api.put('api/bugs/' + bugId, bugData)
+    console.log(bugData)
     this.getOne(bugId)
   }
 // NOTE We can't delete bugs, may need to alter to close a bug
