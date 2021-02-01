@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid BugDetailsPage">
+  <div class="container-fluid BugDetailsPage" v-if="state.bug.closed == false">
     <div class="row">
       <div class="col-12">
         <h2 :contenteditable="state.editTitle" @blur="editBugTitle">
@@ -43,6 +43,10 @@
     <div class="row">
       <NoteComponent v-for="note in state.notes" :key="note.id" :note-props="note" />
     </div>
+  </div>
+
+  <div class="container-fluid BugDetailsPage" v-else>
+    <h1>This Bug is Closed</h1>
   </div>
 </template>
 
