@@ -16,8 +16,8 @@
           <div class="col-4 pr-0">
             <input
               type="text"
-              name="title"
-              id="title"
+              name="description"
+              id="description"
               v-model="state.newBug.description"
               class="form-control d-flex"
               placeholder="Describe the bug"
@@ -33,9 +33,8 @@
     </div>
     <div class="row">
       <div class="offset-9 col-3">
-        <button class="btn btn-info">
-          Filter only active Bugs
-        </button>
+        Show only Open Bugs
+        <input type="checkbox" />
       </div>
     </div>
     <div class="row justify-content-center text-center">

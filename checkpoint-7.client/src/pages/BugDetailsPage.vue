@@ -11,9 +11,9 @@
         </p>
         <i class="fa fa-pencil" v-if="state.account.id == state.bug.creatorId" @click="state.editDesc = !state.editDesc"></i>
         <p> - Bug Closed: {{ bug.closed }}</p>
-        <p>
+        <!-- <p>
           Creator: {{ bug.creatorId }}
-        </p>
+        </p> -->
         <form action="form-inline border justify-content-center align-items-center" @submit.prevent="createNote">
           <div class="form-row justify-content-center">
             <div class="col-11">
@@ -34,7 +34,7 @@
           </div>
         </form>
         <div class="offset-10 col-2">
-          <button class="btn btn-danger mt-3" @click="closeBug">
+          <button class="btn btn-danger mt-3" @click="closeBug" v-if="state.account.id == state.bug.creatorId">
             Close Bug
           </button>
         </div>
