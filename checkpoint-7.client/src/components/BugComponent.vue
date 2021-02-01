@@ -1,6 +1,10 @@
 <template>
   <div class="col-12 my-3 mx-5 bug-component">
-    <router-link :to="{name: 'BugDetailsPage', params: {id: bugProp.id}}">
+    <router-link :to="{name: 'BugDetailsPage', params: {id: bugProp.id}}" v-if="bugProp.closed == true" class="red">
+      <div> {{ bugProp.title }}  {{ bugProp.creator.name }}  {{ bugProp.closed }} </div>
+      <!-- NOTE Last modified date needs to be put into the line of bug info above -->
+    </router-link>
+    <router-link :to="{name: 'BugDetailsPage', params: {id: bugProp.id}}" v-else>
       <div> {{ bugProp.title }}  {{ bugProp.creator.name }}  {{ bugProp.closed }} </div>
       <!-- NOTE Last modified date needs to be put into the line of bug info above -->
     </router-link>
@@ -39,5 +43,7 @@ export default {
 </script>
 
 <style scoped>
-
+.red {
+  color: red;
+}
 </style>
