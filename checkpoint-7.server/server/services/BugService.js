@@ -14,20 +14,20 @@ class BugService {
     return bugFound
   }
 
-  async delete(id) {
-    return await dbContext.Bugs.findByIdAndDelete(id)
+  async delete(id, userId) {
+    return await dbContext.Bugs.findByIdAndDelete({ _id: id, creatorId: userId })
   }
 
   async createBug(body) {
     return await dbContext.Bugs.create(body)
   }
 
-  async edit(id, title) {
-    const update = await dbContext.Bugs.findByIdAndUpdate(id, title, { new: true })
-    if (!update) {
+  async edit(id, title, userId) {
+    const updated = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorId: userId }, title)
+    if (!updated) {
       throw new BadRequest('No Bug exists with that ID')
     }
-    return update
+    return updated
   }
 }
 

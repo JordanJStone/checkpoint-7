@@ -40,7 +40,8 @@ export class NoteController extends BaseController {
 
   async edit(req, res, next) {
     try {
-      res.send(await noteService.edit(req.params.id, req.body))
+      const data = (await noteService.edit(req.params.id, req.body, req.userInfo.id))
+      res.send(data)
     } catch (error) {
       next(error)
     }

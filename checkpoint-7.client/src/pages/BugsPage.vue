@@ -57,7 +57,8 @@ export default {
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       bug: computed(() => AppState.activeBug),
-      newBug: {}
+      newBug: {},
+      filtered: false
     })
     onMounted(async() => {
       try {
@@ -69,6 +70,7 @@ export default {
     return {
       state,
       bugs: computed(() => AppState.bugs),
+      filteredBugs: computed(() => AppState.bugs.filter(closed === false)),
       async createBug() {
         try {
           // console.log('this is your new bug', state.newBug)

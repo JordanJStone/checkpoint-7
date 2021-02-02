@@ -18,8 +18,8 @@ class NoteService {
     return await dbContext.Notes.create(body)
   }
 
-  async edit(id, title) {
-    const update = await dbContext.Notes.findByIdAndUpdate(id, title, { new: true })
+  async edit(id, title, userId) {
+    const update = await dbContext.Notes.findOneAndUpdate({ _id: id, creatorId: userId }, title)
     if (!update) {
       throw new BadRequest('No Note exists with that ID')
     }
