@@ -33,10 +33,14 @@
     </div>
     <div class="row">
       <div class="offset-9 col-3">
-        Show only Open Bugs
-        <input type="checkbox" />
+        <button class="btn btn-primary" @click="state.filtered = !state.filtered">
+          Show only active Bugs
+        </button>
       </div>
     </div>
+    <!-- <div class="row justify-content-center text-center" v-if="state.filtered = true">
+      <BugComponent v-for="bug in filteredbugs" :key="bug.id" :bug-prop="bug" />
+    </div> -->
     <div class="row justify-content-center text-center">
       <BugComponent v-for="bug in bugs" :key="bug.id" :bug-prop="bug" />
     </div>

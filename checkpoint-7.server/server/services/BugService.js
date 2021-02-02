@@ -23,7 +23,8 @@ class BugService {
   }
 
   async edit(id, title, userId) {
-    const updated = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorId: userId }, title)
+    const updated = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorId: userId, closed: false }, title)
+    // this.getOne()
     if (!updated) {
       throw new BadRequest('No Bug exists with that ID')
     }

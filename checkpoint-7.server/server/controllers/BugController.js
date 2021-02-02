@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { bugService } from '../services/bugService'
 import { noteService } from '../services/NoteService'
+// import Bug from '../models/Bug'
 
 export class BugController extends BaseController {
   constructor() {
@@ -50,12 +51,16 @@ export class BugController extends BaseController {
   }
 
   async edit(req, res, next) {
+    // if (req.params.bug === false) {
     try {
       const data = await bugService.edit(req.params.id, req.body, req.userInfo.id)
       res.send(data)
     } catch (error) {
       next(error)
     }
+    // } else {
+    //   return Error
+    // }
   }
 
   async getNotes(req, res, next) {
